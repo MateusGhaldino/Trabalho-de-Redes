@@ -43,7 +43,7 @@ def Player_Cliente():
 
         stream.write(content)  # "Player" de áudio
 
-        if keyboard.is_pressed('p'):  # Se apertar 'p'
+        if keyboard.is_pressed('ctrl+p'):  # Se apertar 'p'
             stop = True
             ClientSocket.send(CONEXAO_ENCERRADA.encode('utf-8'))
             break  # Sai do loop
@@ -102,7 +102,8 @@ while True:
     Response = Response.decode('utf-8')
  
     if Response == SUCESSO:
-        print('Executando')        
+        print('Executando') 
+        print('Para Interromper a execução pressione a tecla "Ctrl + P"')       
 
         Resultado = Player_Cliente()
 

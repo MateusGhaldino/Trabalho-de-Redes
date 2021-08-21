@@ -67,6 +67,7 @@ def Player_server(i,nome,musiclist,codigo,connection,address):
                     break
                 else:
                     print('A execução da música terminou')
+                    
 
             resposta = connection.recv(1024)
             wf.close()
