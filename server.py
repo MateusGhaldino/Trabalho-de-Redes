@@ -49,16 +49,18 @@ def Player_server(i,nome,musiclist,codigo,connection,address):
             wf = wave.open(musicdir+nome, 'rb')
             CHUNK = 1024     # Número de frames de áudio
             data = wf.readframes(CHUNK)
-
+            print('Data:'+ str(len(data)))
+            print('CHUNK:'+str(CHUNK))
             Stop = ''
 
             while data:
-
+                print('Começo do while')
+                print(len(data))
                 connection.send(data)
                 data = wf.readframes(CHUNK)
-                resposta = connection.recv(1024)
+                resposta = connection.recv(256)
                 resposte = resposta.decode('utf-8')
-
+                print(len(data))
                 if resposte == SUCESSO:
                     Stop = False
                 elif resposte == CONEXAO_ENCERRADA:
@@ -67,8 +69,7 @@ def Player_server(i,nome,musiclist,codigo,connection,address):
                     break
                 else:
                     print('A execução da música terminou')
-                    
-
+                     
             resposta = connection.recv(1024)
             wf.close()
             #resposta = connection.recv(1024)

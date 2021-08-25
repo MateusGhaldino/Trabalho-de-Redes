@@ -27,7 +27,7 @@ def Player_Cliente():
     FORMAT = 8
     CHANNELS = 2
     RATE = 44100
-    CHUNK = 4096 
+    CHUNK = 4096
 
 
     stream = p.open(format=FORMAT,
@@ -43,6 +43,7 @@ def Player_Cliente():
 
         stream.write(content)  # "Player" de áudio
 
+        print(len(content))
         if keyboard.is_pressed('ctrl+p'):  # Se apertar 'p'
             stop = True
             ClientSocket.send(CONEXAO_ENCERRADA.encode('utf-8'))
